@@ -1,6 +1,6 @@
 'use client'
 
-import { saveEmail } from "@/actions/saveEmail"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -41,21 +41,16 @@ export function Login() {
 
   const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true)
-    const onSubmit = async (data: LoginFormValues) => {
-      setIsLoading(true);
-  
-      await saveEmail(data.email);
-  
-      console.log("Email guardado:", data.email);
-      setIsLoading(false);
-    };
+    //simulate
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+    console.log(data)
     setIsLoading(false)
   }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">Sign In</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">Inicio de sesión</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-200">
