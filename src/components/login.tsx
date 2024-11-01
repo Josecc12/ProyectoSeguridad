@@ -77,7 +77,7 @@ export function Login() {
               {...register("password")}
             />
             {errors.password && (
-              <p className="mt-1 text-sm text-destructive">{errors.password.message} asdasd</p>
+              <p className="mt-1 text-sm text-destructive">{errors.password.message} </p>
               
             )}
           </div>
