@@ -39,13 +39,38 @@ export function Login() {
     }
    )
 
+  // const onSubmit = async (data: LoginFormValues) => {
+  //   setIsLoading(true)
+  //   //simulate
+  //   await new Promise((resolve) => setTimeout(resolve, 2000))
+  //   console.log(data)
+  //   setIsLoading(false)
+  // }
+
   const onSubmit = async (data: LoginFormValues) => {
-    setIsLoading(true)
-    //simulate
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log(data)
-    setIsLoading(false)
-  }
+    setIsLoading(true);
+  
+    try {
+      // Llamada al endpoint para registrar al usuario
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      const result = await response.json();
+      console.log(result); // Muestra la respuesta del servidor
+    } catch (error) {
+      console.error("Error:", error); // Muestra el error en caso de fallo
+    } finally {
+      // Espera 2 segundos para simular carga y luego cambia el estado de isLoading
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setIsLoading(false);
+    }
+  };
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
