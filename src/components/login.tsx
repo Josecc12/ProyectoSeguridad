@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -21,6 +22,8 @@ type LoginFormValues = z.infer<typeof loginSchema>
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false)
+
+  const router = useRouter()
 
   const {
     handleSubmit,
@@ -68,6 +71,7 @@ export function Login() {
       // Espera 2 segundos para simular carga y luego cambia el estado de isLoading
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setIsLoading(false);
+      router.push("/home");
     }
   };
   
