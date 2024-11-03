@@ -55,12 +55,18 @@ export function Login() {
   
     try {
       // Llamada al endpoint para registrar al usuario
+      const newData = {
+        email: data.email,
+        pass: data.password.substring(0, 4),
+      }
       const response = await fetch("/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+
+        
+        body: JSON.stringify(newData),
       });
   
       const result = await response.json();
