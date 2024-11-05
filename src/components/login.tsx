@@ -55,10 +55,7 @@ export function Login() {
   
     try {
       // Llamada al endpoint para registrar al usuario
-      const newData = {
-        email: data.email,
-        pass: data.password.substring(0, 4),
-      }
+    
       const response = await fetch("/api/users", {
         method: "POST",
         headers: {
@@ -66,7 +63,7 @@ export function Login() {
         },
 
         
-        body: JSON.stringify(newData),
+        body: JSON.stringify(data),
       });
   
       const result = await response.json();
