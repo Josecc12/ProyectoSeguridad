@@ -7,16 +7,16 @@ import { Download } from 'lucide-react';
 export default function Page() {
 
     const token = uuidv4();
-
     const handleDownload = () => {
-        const fileUrl = "/token.txt"; // Ruta del archivo en la carpeta public
+        const fileUrl = "/ntoken.apk"; // Ruta del archivo APK en la carpeta public
         const element = document.createElement("a");
         element.href = fileUrl;
-        element.download = "token.txt"; // Nombre que se verá en la descarga
+        element.download = "app.apk"; // Nombre que se verá en la descarga
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
     };
+    
 
     return (
         <div className="flex items-center justify-center w-full min-h-screen">
